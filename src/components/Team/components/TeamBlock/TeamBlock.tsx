@@ -44,7 +44,7 @@ export const TeamBlock = () => {
 	}, [team]);
 
 	return (
-		<Box>
+		<Box sx={{ marginTop: 2, p: 2, borderRadius: 2, boxShadow: '2px 2px 2px 2px #32CD32', backgroundColor: 'white' }}>
 			<Typography fontSize={24} fontWeight={600}>
 				Моя команда
 			</Typography>

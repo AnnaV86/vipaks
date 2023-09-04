@@ -1,12 +1,10 @@
-@import '../../styles/variables.global.scss';
-
 .header {
 	height: 50px;
 	width: 100%;
 	display: flex;
 	gap: 20px;
 	padding: 10px 20px;
-	color: $black;
+	background-color: #32cd32;
 }
 
 .item {
@@ -16,11 +14,11 @@
 }
 
 .active {
-	color: yellow;
-	border-bottom: 2px solid yellow;
+	color: #fff;
+	border-bottom: 2px solid #fff;
 	font-weight: 600;
 }
 
 .item:hover {
-	color: yellow;
+	color: #fff;
 }

@@ -27,7 +27,7 @@ export const RepositoryCard: FC<IRepositoryCard> = React.memo(({ repository, fet
 
 	return (
 		<Accordion
-			style={{ backgroundColor: 'unset', boxShadow: '2px 2px 2px 2px yellow', borderRadius: 4 }}
+			style={{ backgroundColor: 'white', boxShadow: '2px 2px 2px 2px #32CD32', borderRadius: 4 }}
 			className={styles.accordionContainer}
 			onClick={openAccordion}
 		>

@@ -2,8 +2,8 @@ import { FC, useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Typography, Box, IconButton, Input } from '@mui/material';
 import { Search } from '@mui/icons-material';
-import { addUserTeam } from '@src/store/reducers/team';
 
+import { addUserTeam } from '@src/store/reducers/team';
 import { ITeamUser } from '@src/models';
 import { useSelector } from '@src/utils/useSelector';
 import { OtherUserCard } from './components';
@@ -40,7 +40,7 @@ export const OtherUsers: FC<IOtherUsers> = ({ users }) => {
 	}, [users]);
 
 	return (
-		<Box sx={{ marginTop: 2 }}>
+		<Box sx={{ marginTop: 2, p: 2, borderRadius: 2, boxShadow: '2px 2px 2px 2px #32CD32', backgroundColor: 'white' }}>
 			<Typography fontSize={24} fontWeight={600}>
 				Пользователи
 			</Typography>

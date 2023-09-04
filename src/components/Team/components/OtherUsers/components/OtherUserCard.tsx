@@ -1,8 +1,10 @@
 import React, { FC } from 'react';
 import { Avatar, Box, IconButton, Link, Typography } from '@mui/material';
+import { AddCircleOutline, Check } from '@mui/icons-material';
 
 import { ITeamUser } from '@src/models';
-import { AddCircleOutline, Check } from '@mui/icons-material';
+
+import styles from './OtherUserCard.module.scss';
 
 interface IOtherUserCard {
 	user: ITeamUser;
@@ -15,11 +17,11 @@ export const OtherUserCard: FC<IOtherUserCard> = React.memo(({ user, addUser }) 
 	};
 
 	return (
-		<Box key={user.id} sx={{ pt: 2, display: 'flex', gap: 2, alignItems: 'center' }}>
+		<Box className={styles.container}>
 			<Avatar variant="circular" src={user.avatar_url}></Avatar>
 			<div>
 				<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, height: '37px' }}>
-					<Typography>Логин: {user.login}</Typography>{' '}
+					<Typography>{user.login}</Typography>{' '}
 					{user.in_team ? (
 						<Check />
 					) : (
@@ -29,7 +31,7 @@ export const OtherUserCard: FC<IOtherUserCard> = React.memo(({ user, addUser }) 
 					)}
 				</Box>
 				<Link href={user.html_url} target="_blank">
-					Ссылка: {user.html_url}
+					{user.html_url}
 				</Link>
 			</div>
 		</Box>

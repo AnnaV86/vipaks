@@ -8,9 +8,9 @@ import { formattedDate } from '@src/utils/formattedDate';
 import { useSelector } from '@src/utils/useSelector';
 import { IUser } from '@src/models';
 import { getUserThunk } from '@src/store/actionsThunk';
-
-import styles from './Home.styles.scss';
 import { Followers } from './comsponents/Followers';
+
+import styles from './Home.module.scss';
 
 export const Home = () => {
 	const dispatch = useDispatch();

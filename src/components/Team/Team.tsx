@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Box, CircularProgress, Typography } from '@mui/material';
 
 import { Header } from '../Header';
 import { TeamBlock } from './components/TeamBlock';
@@ -7,8 +8,7 @@ import { OtherUsers } from './components/OtherUsers';
 import { getTeamUsersThunk } from '@src/store/actionsThunk';
 import { useSelector } from '@src/utils/useSelector';
 
-import styles from './Team.styles.scss';
-import { Box, CircularProgress, Typography } from '@mui/material';
+import styles from './Team.module.scss';
 
 export const Team = () => {
 	const dispatch = useDispatch();

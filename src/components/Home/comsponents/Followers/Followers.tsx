@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Avatar, Box, Typography, Link } from '@mui/material';
+
 import { IFollower } from '@src/models';
 
 interface IFollowers {
