@@ -6,8 +6,38 @@
 
 .content {
 	padding: 40px 100px;
+	width: 100%;
+}
+
+.nameBlock {
+	display: flex;
+	gap: 20;
+	justify-content: center;
 }
 
 .date {
 	text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+	.content {
+		padding: 20px 20px;
+	}
+
+	.nameBlock {
+		width: 100%;
+		justify-content: flex-start;
+	}
+	.date {
+		text-align: start;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.content {
+		padding: 20px 15px;
+	}
+}
+
+@media screen and (max-width: 320px) {
 }

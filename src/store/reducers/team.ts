@@ -30,14 +30,14 @@ const teamSlice = createSlice({
 			state.team = state.team.filter(({ id }) => id !== action.payload);
 			state.users = state.users.map((user) => (user.id === action.payload ? { ...user, in_team: false } : user));
 		},
-		isFetching: (state, action: PayloadAction<boolean>) => {
+		isFetchingTeam: (state, action: PayloadAction<boolean>) => {
 			state.isFetching = action.payload;
 		},
-		setError: (state, action: PayloadAction<string>) => {
+		setErrorTeam: (state, action: PayloadAction<string>) => {
 			state.error = action.payload;
 		},
 	},
 });
 
-export const { setUsers, addUserTeam, deleteUserTeam, isFetching, setError } = teamSlice.actions;
+export const { setUsers, addUserTeam, deleteUserTeam, isFetchingTeam, setErrorTeam } = teamSlice.actions;
 export default teamSlice.reducer;

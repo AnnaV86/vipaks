@@ -27,25 +27,35 @@ export const Home = () => {
 		<div className={styles.container}>
 			<Header />
 			{!isFetching ? (
-				<section className={styles.content}>
-					<Box sx={{ p: 2, display: 'flex', gap: 2, justifyContent: 'center' }}>
-						<Avatar variant="circular" src={userData?.avatar_url} />
-						<Link fontSize={34} fontWeight={700} color="#000" href={userData?.html_url} target="_blank">
-							{userData?.name}
-						</Link>
-					</Box>
-					<Typography fontSize={20} fontWeight={500} className={styles.date}>
-						Профиль создан: {formattedDate(userData?.created_at)}
-					</Typography>
-					<Repositories repositories={repositories} />
-					<Followers followers={followers} />
-				</section>
+				user && (
+					<section className={styles.content}>
+						<div className={styles.nameBlock}>
+							<Avatar variant="circular" src={userData?.avatar_url} />
+							<Link
+								sx={{ fontSize: 34, fontWeight: 700, color: '#000', marginLeft: 2, textDecoration: 'none' }}
+								href={userData?.html_url}
+								target="_blank"
+							>
+								{userData?.name}
+							</Link>
+						</div>
+						<Typography fontSize={20} fontWeight={500} className={styles.date}>
+							Профиль создан: {formattedDate(userData?.created_at)}
+						</Typography>
+						<Repositories repositories={repositories} />
+						<Followers followers={followers} />
+					</section>
+				)
 			) : (
 				<Box sx={{ p: 2, marginTop: 15, display: 'flex', justifyContent: 'center' }}>
 					<CircularProgress color={'inherit'} />
 				</Box>
 			)}
-			{error && <Typography color={'red'}>{error}</Typography>}
+			{error && (
+				<Typography fontSize={20} sx={{ display: 'flex', justifyContent: 'center', color: 'red', marginTop: 10 }}>
+					{error}
+				</Typography>
+			)}
 		</div>
 	);
 };

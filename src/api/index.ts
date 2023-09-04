@@ -1,3 +1,4 @@
+import { errorHandler } from '@src/utils/errorHandler';
 import { axios } from './axios';
 
 export const api = {
@@ -6,7 +7,7 @@ export const api = {
 			const response = await axios.get('users/AnnaV86');
 			return response;
 		} catch (error) {
-			console.error(error);
+			errorHandler(error);
 		}
 	},
 	async getUserRepositories() {
@@ -14,7 +15,7 @@ export const api = {
 			const response = await axios.get('users/AnnaV86/repos');
 			return response;
 		} catch (error) {
-			console.error(error);
+			errorHandler(error);
 		}
 	},
 	async getUserFollowing() {
@@ -22,7 +23,7 @@ export const api = {
 			const response = await axios.get('users/AnnaV86/following');
 			return response;
 		} catch (error) {
-			console.error(error);
+			errorHandler(error);
 		}
 	},
 	async getLanguages(data: string) {
@@ -30,7 +31,7 @@ export const api = {
 			const response = await axios.get(`repos/AnnaV86/${data}/languages`);
 			return response;
 		} catch (error) {
-			console.error(error);
+			errorHandler(error);
 		}
 	},
 	async getTeamUsers(params?: Record<string, string>) {
@@ -38,7 +39,7 @@ export const api = {
 			const response = await axios.get(`users`, { params });
 			return response;
 		} catch (error) {
-			console.error(error);
+			errorHandler(error);
 		}
 	},
 };

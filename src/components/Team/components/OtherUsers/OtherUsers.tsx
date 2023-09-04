@@ -1,11 +1,12 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Avatar, Typography, Link, Box, IconButton, Input } from '@mui/material';
-import { AddCircleOutline, Search, Check } from '@mui/icons-material';
+import { Typography, Box, IconButton, Input } from '@mui/material';
+import { Search } from '@mui/icons-material';
 import { addUserTeam } from '@src/store/reducers/team';
 
 import { ITeamUser } from '@src/models';
 import { useSelector } from '@src/utils/useSelector';
+import { OtherUserCard } from './components';
 
 interface IOtherUsers {
 	users: ITeamUser[];
@@ -14,13 +15,13 @@ interface IOtherUsers {
 export const OtherUsers: FC<IOtherUsers> = ({ users }) => {
 	const dispatch = useDispatch();
 	const { team } = useSelector((state) => state.team);
-	const [usersData, setUsersData] = useState(users);
+	const [usersData, setUsersData] = useState<ITeamUser[]>([]);
 	const [searchText, setSearchText] = useState('');
 
-	const addUser = (user: ITeamUser) => {
+	const addUser = useCallback((user: ITeamUser) => {
 		if (team.find((item) => item.id === user.id)) return;
 		dispatch(addUserTeam(user));
-	};
+	}, []);
 
 	const searchUsers = () => {
 		const filteredUsers = users.filter((user) => user.login.includes(searchText));
@@ -32,36 +33,24 @@ export const OtherUsers: FC<IOtherUsers> = ({ users }) => {
 	};
 
 	useEffect(() => {
-		if (users) setUsersData(users);
+		if (users)
+			if (searchText) {
+				searchUsers();
+			} else setUsersData(users);
 	}, [users]);
 
 	return (
-		<Box>
+		<Box sx={{ marginTop: 2 }}>
 			<Typography fontSize={24} fontWeight={600}>
 				Пользователи
 			</Typography>
-			<Input type="text" value={searchText} onChange={changeText} />
+			<Input type="text" value={searchText} onChange={changeText} sx={{ marginTop: 5, marginBottom: 3 }} />
 			<IconButton onClick={searchUsers}>
 				<Search />
 			</IconButton>
 			<Box>
-				{usersData.map((user) => (
-					<Box key={user.id} sx={{ pt: 2, display: 'flex', gap: 2, alignItems: 'center' }}>
-						<Avatar variant="circular" src={user.avatar_url}></Avatar>
-						<div>
-							<Typography>Логин: {user.login}</Typography>
-							<Link href={user.html_url} target="_blank">
-								Ссылка: {user.html_url}
-							</Link>
-						</div>
-						{user.in_team ? (
-							<Check />
-						) : (
-							<IconButton onClick={() => addUser(user)}>
-								<AddCircleOutline />
-							</IconButton>
-						)}
-					</Box>
+				{usersData?.map((user) => (
+					<OtherUserCard key={user.id} user={user} addUser={addUser} />
 				))}
 			</Box>
 		</Box>

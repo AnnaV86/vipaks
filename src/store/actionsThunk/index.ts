@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import { isFetching, setError, setFollowers, setLanguages, setRepositories, setUser } from '../reducers/user';
-import { setUsers } from '../reducers/team';
+import { setUsers, setErrorTeam, isFetchingTeam } from '../reducers/team';
 import { api } from '@src/api';
 
 export function getUserThunk() {
@@ -41,12 +41,14 @@ export function getLanguagesThunk(id: number, repositoryName: string) {
 export function getTeamUsersThunk() {
 	return async (dispatch: Dispatch) => {
 		try {
-			dispatch(setError(''));
+			dispatch(isFetchingTeam(true));
+			dispatch(setErrorTeam(''));
 			const res = await api.getTeamUsers({ since: '50000000' });
-			console.log(res);
 			dispatch(setUsers(res?.data));
 		} catch (e) {
-			dispatch(setError('Что-то пошло не так...'));
+			dispatch(setErrorTeam('Что-то пошло не так...'));
+		} finally {
+			dispatch(isFetchingTeam(false));
 		}
 	};
 }

@@ -27,7 +27,7 @@ const userSlice = createSlice({
 		setRepositories: (state, action: PayloadAction<IRepository[]>) => {
 			state.repositories = action.payload;
 		},
-		setFollowers: (state, action: PayloadAction<any[]>) => {
+		setFollowers: (state, action: PayloadAction<IFollower[]>) => {
 			state.followers = action.payload;
 		},
 		isFetching: (state, action: PayloadAction<boolean>) => {

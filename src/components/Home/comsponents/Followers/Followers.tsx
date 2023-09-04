@@ -45,9 +45,13 @@ export const Followers: FC<IFollowers> = ({ followers }) => {
 					marginTop: 3,
 				}}
 			>
-				{followers.map((item) => (
-					<FollowersCard key={item.id} follower={item} />
-				))}
+				{followers.length ? (
+					followers.map((item) => <FollowersCard key={item.id} follower={item} />)
+				) : (
+					<Typography fontSize={16} fontWeight={600}>
+						Нет подписчиков
+					</Typography>
+				)}
 			</Box>
 		</div>
 	);
