@@ -1,0 +1,26 @@
+@import '../../styles/variables.global.scss';
+
+.header {
+	height: 50px;
+	width: 100%;
+	display: flex;
+	gap: 20px;
+	padding: 10px 20px;
+	color: $black;
+}
+
+.item {
+	font-size: 20px;
+	font-weight: 500;
+	padding: 0 10px;
+}
+
+.active {
+	color: yellow;
+	border-bottom: 2px solid yellow;
+	font-weight: 600;
+}
+
+.item:hover {
+	color: yellow;
+}

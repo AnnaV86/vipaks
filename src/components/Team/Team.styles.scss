@@ -1,0 +1,11 @@
+.container {
+	background: linear-gradient(#7aec7a, yellow);
+}
+
+.content {
+	width: 100%;
+	padding: 40px 100px;
+	display: grid;
+	gap: 0 20px;
+	grid-template-columns: 1fr 1fr;
+}
